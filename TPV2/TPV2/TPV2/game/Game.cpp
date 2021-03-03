@@ -24,17 +24,23 @@ Game::~Game() {
 
 void Game::init() {
 
-	SDLUtils::init("Que locos los asteroides", 800, 600,
-			"resources/config/fighter.resources.json");
+	SDLUtils::init("Asteroids", 800, 600,
+			"resources/config/asteroids.resources.json");
 
-	auto *player = mngr_->addEntity();
-	player->addComponent<Transform>(
-			Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f),
-			Vector2D(), 30.0f, 30.0f, 0.0f);
-	player->addComponent<Image>(&sdlutils().images().at("fighter"));
-	player->addComponent<Rotate>();
-	//player->addComponent<Bounce>();
+	//auto *ball = mngr_->addEntity();
+	//ball->addComponent<Transform>(
+	//		Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f),
+	//		Vector2D(), 10.0f, 10.0f, 0.0f);
+	//ball->addComponent<Image>(&sdlutils().images().at("tennis_ball"));
+	//ball->addComponent<Rotate>();
+	//ball->addComponent<Bounce>();
 
+	auto* caza = mngr_->addEntity();
+									//Pos															//vel		//width, height, rotation
+	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
+	caza->addComponent<Image>(&sdlutils().images().at("fighter"));
+	caza->addComponent<Rotate>();
+	
 
 }
 
