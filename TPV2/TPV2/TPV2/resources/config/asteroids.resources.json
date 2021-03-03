@@ -6,7 +6,7 @@
   ],
   
   "images" : [
-    { "id" : "tennis_ball", "file" : "resources/images/tennis_ball.png" }
+    { "id" : "fighter", "file" : "resources/images/fighter.png" }
   ],
   
   "messages" : [

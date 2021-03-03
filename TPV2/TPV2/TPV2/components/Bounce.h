@@ -38,10 +38,7 @@ public:
 		} else if (pos.getY() + h > sdlutils().height()) {
 			pos.setY(sdlutils().height() - h);
 			vel.setY(-vel.getY());
-
 		}
-
-
 	}
 
 private:
