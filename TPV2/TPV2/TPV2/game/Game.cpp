@@ -2,8 +2,9 @@
 
 #include "Game.h"
 
-#include "../components/Bounce.h"
-#include "../components/KeyBoardCtrl.h"
+#include "../components/CollideBounds.h"
+#include "../components/DeAcceleration.h"
+#include "../components/FighterCtrl.h"
 #include "../components/Rotate.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
@@ -24,7 +25,7 @@ Game::~Game() {
 
 void Game::init() {
 
-	SDLUtils::init("Asteroids", 800, 600,
+	SDLUtils::init("How mad are the Asteroids?", 800, 600,
 			"resources/config/asteroids.resources.json");
 
 	//auto *ball = mngr_->addEntity();
@@ -39,8 +40,11 @@ void Game::init() {
 									//Pos															//vel		//width, height, rotation
 	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	caza->addComponent<Image>(&sdlutils().images().at("fighter"));
+	//caza->addComponent<Rotate>();
+	caza->addComponent<FighterCtrl>(10.0f, 0.2f);
+	caza->addComponent<CollideBounds>();
 	caza->addComponent<Rotate>();
-	
+	caza->addComponent<DeAcceleration>(0.95f);
 
 }
 

@@ -10,12 +10,12 @@
 #include "../ecs/Entity.h"
 #include "Transform.h"
 
-class KeyBoardCtrl: public Component {
+class FighterCtrl: public Component {
 public:
-	KeyBoardCtrl() :
-			tr_(nullptr), speed_(10.0) {
+	FighterCtrl(const float spd = 10.0f, const float thr = 0.2f) :
+			tr_(nullptr), speed_(spd), thrust_(thr), speedLimit_(3.0f){
 	}
-	virtual ~KeyBoardCtrl() {
+	virtual ~FighterCtrl() {
 	}
 
 
@@ -29,26 +29,22 @@ public:
 	}
 
 	void update() override {
+	auto &vel = tr_->getVel();
 		if (ih().keyDownEvent()) {
-			auto &vel = tr_->getVel();
 			if (ih().isKeyDown(SDL_SCANCODE_UP)) {
-				vel.setY(-speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_DOWN)) {
-				vel.setY(speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_LEFT)) {
-				vel.setX(-speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_RIGHT)) {
-				vel.setX(speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_SPACE)) {
-				vel.setY(0.0f);
-				vel.setX(0.0f);
+				vel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thrust_;
 			}
+		}
+
+		if (vel.magnitude() >= speedLimit_)
+		{
+			vel = vel.normalize()* speedLimit_;
 		}
 	}
 
 private:
 	Transform *tr_;
-	float speed_;
+	float speed_, thrust_, speedLimit_;
 }
 ;
 
