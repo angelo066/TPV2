@@ -12,8 +12,8 @@
 
 class KeyBoardCtrl: public Component {
 public:
-	KeyBoardCtrl() :
-			tr_(nullptr), speed_(10.0) {
+	KeyBoardCtrl(const float value = 0.5f) :
+			tr_(nullptr), speed_(10.0),thurst(value), maxSpeed(3) {
 	}
 	virtual ~KeyBoardCtrl() {
 	}
@@ -29,26 +29,22 @@ public:
 	}
 
 	void update() override {
+		auto &vel = tr_->getVel();
 		if (ih().keyDownEvent()) {
-			auto &vel = tr_->getVel();
+			
 			if (ih().isKeyDown(SDL_SCANCODE_UP)) {
-				vel.setY(-speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_DOWN)) {
-				vel.setY(speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_LEFT)) {
-				vel.setX(-speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_RIGHT)) {
-				vel.setX(speed_);
-			} else if (ih().isKeyDown(SDL_SCANCODE_SPACE)) {
-				vel.setY(0.0f);
-				vel.setX(0.0f);
+				Vector2D newVel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thurst;
+
+				if (vel.magnitude() >= maxSpeed)vel = newVel.normalize() * maxSpeed;
+				else vel = newVel;
 			}
 		}
 	}
 
 private:
 	Transform *tr_;
-	float speed_;
+	float speed_, thurst;
+	float maxSpeed;
 }
 ;
 

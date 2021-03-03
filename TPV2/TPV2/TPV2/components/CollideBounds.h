@@ -6,12 +6,12 @@
 #include "Transform.h"
 #include "../sdlutils/SDLUtils.h"
 
-class Bounce: public Component {
+class CollideBounds: public Component {
 public:
-	Bounce() :
+	CollideBounds() :
 			tr_(nullptr) {
 	}
-	virtual ~Bounce() {
+	virtual ~CollideBounds() {
 	}
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
@@ -26,18 +26,18 @@ public:
 
 		if (pos.getX() < 0) {
 			pos.setX(0.0);
-			vel.setX(-vel.getX());
+			//vel.setX(-vel.getX());
 		} else if (pos.getX() + w > sdlutils().width()) {
 			pos.setX(sdlutils().width() - w);
-			vel.setX(-vel.getX());
+			//vel.setX(-vel.getX());
 		}
 
 		if (pos.getY() < 0) {
 			pos.setY(0.0);
-			vel.setY(-vel.getY());
+			//vel.setY(-vel.getY());
 		} else if (pos.getY() + h > sdlutils().height()) {
 			pos.setY(sdlutils().height() - h);
-			vel.setY(-vel.getY());
+			//vel.setY(-vel.getY());
 		}
 	}
 

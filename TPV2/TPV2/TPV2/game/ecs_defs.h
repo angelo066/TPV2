@@ -6,17 +6,19 @@
 class Transform;
 class Rectangle;
 class KeyBoardCtrl;
-class Bounce;
+class CollideBounds;
 class Image;
 class Rotate;
+class DeAcceleration;
 
 #define _CMPS_LIST_  \
 	Transform,\
 	Rectangle,\
 	KeyBoardCtrl,\
-	Bounce,\
+	CollideBounds,\
 	Image,\
-	Rotate
+	Rotate,\
+	DeAcceleration
 
 // groups
 
