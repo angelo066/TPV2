@@ -21,9 +21,7 @@ class Rotate;
 // groups
 
 struct Group_1;
-struct Asteroids;
-#define _GRPS_LIST_  Group_1  \
-Asteroids;
+#define _GRPS_LIST_  Group_1
 
 // handlers
 struct Hdlr_1;
