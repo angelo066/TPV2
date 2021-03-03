@@ -4,7 +4,7 @@
 
 #include "..//components/DeAcceleration.h"
 #include "../components/CollideBounds.h"
-#include "../components/KeyBoardCtrl.h"
+#include "../components/FighterCtrl.h"
 #include "../components/Rotate.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
@@ -41,7 +41,7 @@ void Game::init() {
 									//Pos															//vel		//width, height, rotation
 	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	caza->addComponent<Image>(&sdlutils().images().at("fighter"));
-	caza->addComponent<KeyBoardCtrl>();
+	caza->addComponent<FighterCtrl>();
 	caza->addComponent<CollideBounds>();
 	caza->addComponent<DeAcceleration>();
 	caza->addComponent<Rotate>();

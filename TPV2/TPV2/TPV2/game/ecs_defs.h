@@ -5,7 +5,7 @@
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Rectangle;
-class KeyBoardCtrl;
+class FighterCtrl;
 class CollideBounds;
 class Image;
 class Rotate;
@@ -14,7 +14,7 @@ class DeAcceleration;
 #define _CMPS_LIST_  \
 	Transform,\
 	Rectangle,\
-	KeyBoardCtrl,\
+	FighterCtrl,\
 	CollideBounds,\
 	Image,\
 	Rotate,\
