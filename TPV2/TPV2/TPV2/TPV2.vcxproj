@@ -37,6 +37,7 @@
     <ClInclude Include="components\CollideBounds.h" />
     <ClInclude Include="components\DeAcceleration.h" />
     <ClInclude Include="components\FighterCtrl.h" />
+    <ClInclude Include="components\Gun.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\Rectangle.h" />
     <ClInclude Include="components\Rotate.h" />

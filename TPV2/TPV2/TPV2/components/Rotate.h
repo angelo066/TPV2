@@ -32,10 +32,10 @@ public:
 		if (ih().keyDownEvent()) {
 			auto& vel = tr_->getVel();
 			if (ih().isKeyDown(SDLK_LEFT)) {
-				tr_->setRot(tr_->getRot() + 5.0f);
+				tr_->setRot(tr_->getRot() - 5.0f);
 			}
 			else if (ih().isKeyDown(SDLK_RIGHT)) {
-				tr_->setRot(tr_->getRot() - 5.0f);
+				tr_->setRot(tr_->getRot() + 5.0f);
 			}
 		}
 	}

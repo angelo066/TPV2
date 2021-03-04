@@ -9,6 +9,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Entity.h"
 #include "Transform.h"
+#include"../sdlutils/SDLUtils.h"
 
 class FighterCtrl : public Component {
 public:
@@ -34,7 +35,7 @@ public:
 			
 			if (ih().isKeyDown(SDL_SCANCODE_UP)) {
 				vel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thurst_;
-
+				sdlutils().soundEffects().at("thrust").play();
 			}
 		}
 

@@ -2,6 +2,7 @@
 
 #include "Game.h"
 
+#include "..///components/Gun.h"
 #include "..//components/DeAcceleration.h"
 #include "../components/CollideBounds.h"
 #include "../components/FighterCtrl.h"
@@ -45,6 +46,7 @@ void Game::init() {
 	caza->addComponent<CollideBounds>();
 	caza->addComponent<DeAcceleration>(0.95f);
 	caza->addComponent<Rotate>();
+	caza->addComponent<Gun>();
 }
 
 void Game::start() {

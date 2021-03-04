@@ -10,6 +10,7 @@ class CollideBounds;
 class Image;
 class Rotate;
 class DeAcceleration;
+class Gun;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -18,7 +19,8 @@ class DeAcceleration;
 	CollideBounds,\
 	Image,\
 	Rotate,\
-	DeAcceleration
+	DeAcceleration,\
+	Gun
 
 // groups
 

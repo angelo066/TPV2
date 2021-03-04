@@ -1,12 +1,39 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #pragma once
+#include <SDL.h>
+#include <cassert>
+
 #include "../ecs/Component.h"
-#include "../utils/Vector2D.h"
+#include "../sdlutils/InputHandler.h"
+#include "../ecs/Entity.h"
+#include "Transform.h"
+#include "..//sdlutils/SDLUtils.h"
 
 class Gun : public Component {
 public:
-	Gun(){
+	Gun() :
+		tr_(nullptr) {
 	}
-};
+	virtual ~Gun() {
+	}
 
+
+
+	void init() override {
+		tr_ = entity_->getComponent<Transform>();
+		assert(tr_ != nullptr);
+	}
+
+	void update() override {
+		if (ih().keyDownEvent()) {
+			//auto& vel = tr_->getVel();
+			if (ih().isKeyDown(SDLK_s)) {
+				sdlutils().soundEffects().at("fire").play();
+				
+			}
+		}
+	}
+
+private:
+	Transform* tr_;
+}
+;
