@@ -26,7 +26,7 @@ public:
 	void update() override {
 		Vector2D pos = tr_->getPos();
 
-		//Guardamos las posición
+		//Guardamos las posiciï¿½n
 		float x = pos.getX();
 		float y = pos.getY();
 
@@ -39,12 +39,12 @@ public:
 		float h = tr_->getH();
 
 		if (x > windowW) {
-			tr_->getPos().setX(0 - w);		//Le restamos su anchura porque si no aparece automáticamente en pantalla	
+			tr_->getPos().setX(0 - w);		//Le restamos su anchura porque si no aparece automï¿½ticamente en pantalla	
 		}
 		else if (x < 0 - w) {	//Le restamos su anchura porque si no se trigerea en cuanto toca el borde
 			tr_->getPos().setX(windowW);
 		}
-		else if(y < 0 - h){//Le restamos su altura porque si no aparece automáticamente en pantalla	
+		else if(y < 0 - h){//Le restamos su altura porque si no aparece automï¿½ticamente en pantalla	
 			tr_->getPos().setY(windowH);
 		}
 		else if (y > windowH + h) {//Le sumamos su altura sporque si no se trigerea en cuanto toca el borde

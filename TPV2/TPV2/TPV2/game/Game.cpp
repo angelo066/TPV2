@@ -5,6 +5,7 @@
 #include "..//components/ShowAtOpposieSide.h"
 #include "..///components/Gun.h"
 #include "..//components/DeAcceleration.h"
+#include "..//components/ShowAtOpposieSide.h"
 #include "..//components/Gun.h"
 #include "../components/CollideBounds.h"
 #include "../components/FighterCtrl.h"

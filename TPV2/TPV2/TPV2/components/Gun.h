@@ -16,11 +16,6 @@ public:
 	virtual ~Gun() {
 	}
 
-	inline void setSpeed(float speed) {
-		
-	}
-
-
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr);
@@ -28,7 +23,6 @@ public:
 
 	void update() override {
 		if (ih().keyDownEvent()) {
-			//auto& vel = tr_->getVel();
 			if (ih().isKeyDown(SDLK_s)) {
 				sdlutils().soundEffects().at("fire").play();
 				
