@@ -4,6 +4,7 @@
 
 #include "..///components/Gun.h"
 #include "..//components/DeAcceleration.h"
+#include "..//components/Gun.h"
 #include "../components/CollideBounds.h"
 #include "../components/FighterCtrl.h"
 #include "../components/Rotate.h"

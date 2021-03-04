@@ -16,6 +16,9 @@ public:
 	virtual ~Gun() {
 	}
 
+	inline void setSpeed(float speed) {
+		speed_ = speed;
+	}
 
 
 	void init() override {
