@@ -10,8 +10,8 @@
 
 class ShowAtOpposieSide : public Component {
 public:
-	ShowAtOpposieSide() :
-		tr_(nullptr) {
+	ShowAtOpposieSide(Vector2D winProps) :
+		tr_(nullptr), windowProps(winProps) {
 	}
 	virtual ~ShowAtOpposieSide() {
 	}
@@ -24,21 +24,36 @@ public:
 	}
 
 	void update() override {
-		if (tr_->getPos().getX() > sdlutils().width()) {
-			tr_->getPos().setX(0 - tr_->getW());		//Le restamos su anchura porque si no aparece automáticamente en pantalla	
+		Vector2D pos = tr_->getPos();
+
+		//Guardamos las posición
+		float x = pos.getX();
+		float y = pos.getY();
+
+		//Guardamos las propiedades de la ventana
+		float windowW = windowProps.getX();
+		float windowH = windowProps.getY();
+
+		//Guardamos la altura y anchura del jugador
+		float w = tr_->getW();
+		float h = tr_->getH();
+
+		if (x > windowW) {
+			tr_->getPos().setX(0 - w);		//Le restamos su anchura porque si no aparece automáticamente en pantalla	
 		}
-		else if (tr_->getPos().getX() < 0 - tr_->getW()) {	//Le restamos su anchura porque si no se trigerea en cuanto toca el borde
-			tr_->getPos().setX(sdlutils().width());
+		else if (x < 0 - w) {	//Le restamos su anchura porque si no se trigerea en cuanto toca el borde
+			tr_->getPos().setX(windowW);
 		}
-		else if(tr_->getPos().getY() < 0 - tr_->getH()){//Le restamos su altura porque si no aparece automáticamente en pantalla	
-			tr_->getPos().setY(sdlutils().height());
+		else if(y < 0 - h){//Le restamos su altura porque si no aparece automáticamente en pantalla	
+			tr_->getPos().setY(windowH);
 		}
-		else if (tr_->getPos().getY() > sdlutils().height() + tr_->getH()) {//Le sumamos su altura sporque si no se trigerea en cuanto toca el borde
-			tr_->getPos().setY(0 - tr_->getH());
+		else if (y > windowH + h) {//Le sumamos su altura sporque si no se trigerea en cuanto toca el borde
+			tr_->getPos().setY(0 - h);
 		}
 	}
 
 private:
 	Transform* tr_;
+	Vector2D windowProps;
 }
 ;

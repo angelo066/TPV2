@@ -48,7 +48,7 @@ void Game::init() {
 	caza->addComponent<DeAcceleration>(0.95f);
 	caza->addComponent<Rotate>();
 	caza->addComponent<Gun>();
-	caza->addComponent<ShowAtOpposieSide>();
+	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 }
 
 void Game::start() {

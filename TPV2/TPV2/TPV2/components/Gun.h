@@ -17,7 +17,7 @@ public:
 	}
 
 	inline void setSpeed(float speed) {
-		speed_ = speed;
+		
 	}
 
 
