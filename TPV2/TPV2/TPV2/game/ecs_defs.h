@@ -11,6 +11,7 @@ class Image;
 class Rotate;
 class DeAcceleration;
 class Gun;
+class ShowAtOpposieSide;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -20,7 +21,8 @@ class Gun;
 	Image,\
 	Rotate,\
 	DeAcceleration,\
-	Gun
+	Gun,\
+	ShowAtOpposieSide
 
 // groups
 

@@ -188,5 +188,8 @@
     <ClInclude Include="components\Gun.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\ShowAtOpposieSide.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
