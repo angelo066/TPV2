@@ -12,8 +12,8 @@
 
 class FighterCtrl : public Component {
 public:
-	FighterCtrl(const float value = 0.5f) :
-			tr_(nullptr), speed_(10.0), thurst_(value), maxSpeed_(3) {
+	FighterCtrl(const float spd = 10.0f, const float thr = 0.2f) :
+			tr_(nullptr), speed_(spd), thurst_(thr), maxSpeed_(3) {
 	}
 	virtual ~FighterCtrl() {
 	}
@@ -33,18 +33,17 @@ public:
 		if (ih().keyDownEvent()) {
 			
 			if (ih().isKeyDown(SDL_SCANCODE_UP)) {
-				Vector2D newVel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thurst_;
+				vel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thurst_;
 
-				if (vel.magnitude() >= maxSpeed_)vel = newVel.normalize() * maxSpeed_;
-				else vel = newVel;
 			}
 		}
+
+		if (vel.magnitude() >= maxSpeed_) vel = vel.normalize() * maxSpeed_;
 	}
 
 private:
 	Transform *tr_;
-	float speed_, thurst_;
-	float maxSpeed_;
+	float speed_, thurst_, maxSpeed_;
 }
 ;
 

@@ -41,9 +41,9 @@ void Game::init() {
 									//Pos															//vel		//width, height, rotation
 	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	caza->addComponent<Image>(&sdlutils().images().at("fighter"));
-	caza->addComponent<FighterCtrl>();
+	caza->addComponent<FighterCtrl>(10.0f, 0.4);
 	caza->addComponent<CollideBounds>();
-	caza->addComponent<DeAcceleration>();
+	caza->addComponent<DeAcceleration>(0.95f);
 	caza->addComponent<Rotate>();
 }
 

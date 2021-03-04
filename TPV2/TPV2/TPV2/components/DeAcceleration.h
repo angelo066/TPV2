@@ -9,8 +9,8 @@
 
 class DeAcceleration : public Component {
 public:
-	DeAcceleration() :
-		tr_(nullptr) {
+	DeAcceleration(const float deacc = 0.95f) :
+		tr_(nullptr), deacceleration_(deacc) {
 	}
 	virtual ~DeAcceleration() {
 	}
@@ -23,9 +23,10 @@ public:
 		
 		auto& vel = tr_->getVel();
 
-		vel.set(vel.getX() * 0.95f, vel.getY() * 0.95f);
+		vel.set(vel.getX() * deacceleration_, vel.getY() * deacceleration_);
 	}
 
 private:
 	Transform* tr_;
+	float deacceleration_;
 };
