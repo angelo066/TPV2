@@ -8,7 +8,6 @@
 #include "../ecs/Entity.h"
 #include "Transform.h"
 #include "..//sdlutils/SDLUtils.h"
-#include "..//ecs/Manager.h"
 
 #include "../ecs/Manager.h"
 
@@ -24,7 +23,7 @@ public:
 
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
-		lastTime = sdlutils().currRealTime() - timer;
+		lastTime = sdlutils().currRealTime() - timer; //la resta es para que deje disparar al principio del juego
 		mngr = entity_->getMngr();
 		assert(tr_ != nullptr);
 	}
