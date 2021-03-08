@@ -2,13 +2,16 @@
 #include <SDL.h>
 #include <cassert>
 
+#include "..//components/DisableOnExit.h"
 #include "../ecs/Component.h"
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Entity.h"
 #include "Transform.h"
 #include "..//sdlutils/SDLUtils.h"
+#include "..//ecs/Manager.h"
 
 #include "../ecs/Manager.h"
+
 
 class Gun : public Component {
 public:
@@ -21,12 +24,14 @@ public:
 
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
-		lastTime = sdlutils().currRealTime();
+		lastTime = sdlutils().currRealTime() - timer;
 		mngr = entity_->getMngr();
 		assert(tr_ != nullptr);
 	}
 
 	void update() override {
+
+		//Disparo
 		if (ih().keyDownEvent()) {
 			if (ih().isKeyDown(SDLK_s)) {
 				if (sdlutils().currRealTime() - lastTime  > timer)
@@ -42,7 +47,10 @@ public:
 					Vector2D bVel = Vector2D(0.0f, -1.0f).rotate(r) * (tr_->getVel().magnitude() + 5.0f);
 					bala->addComponent<Transform>(bPos, bVel, 5.0f, 20.0f, r);
 					bala->addComponent<Image>(&sdlutils().images().at("bullet"));
+					bala->addComponent<DisableOnExit>();
 					sdlutils().soundEffects().at("fire").play();
+
+					bala->setGroup<Bullet_grp>(true);
 				}
 			}
 		}

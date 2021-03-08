@@ -12,6 +12,7 @@ class Rotate;
 class DeAcceleration;
 class Gun;
 class ShowAtOpposieSide;
+class DisableOnExit;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -22,7 +23,8 @@ class ShowAtOpposieSide;
 	Rotate,\
 	DeAcceleration,\
 	Gun,\
-	ShowAtOpposieSide
+	ShowAtOpposieSide,\
+	DisableOnExit
 
 // groups
 
