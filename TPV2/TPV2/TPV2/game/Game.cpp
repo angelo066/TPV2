@@ -33,14 +33,6 @@ void Game::init() {
 	SDLUtils::init("How mad are the Asteroids?", 800, 600,
 			"resources/config/asteroids.resources.json");
 
-	//auto *ball = mngr_->addEntity();
-	//ball->addComponent<Transform>(
-	//		Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f),
-	//		Vector2D(), 10.0f, 10.0f, 0.0f);
-	//ball->addComponent<Image>(&sdlutils().images().at("tennis_ball"));
-	//ball->addComponent<Rotate>();
-	//ball->addComponent<Bounce>();
-
 	auto* caza = mngr_->addEntity();
 									//Pos															//vel		//width, height, rotation
 	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
@@ -48,7 +40,7 @@ void Game::init() {
 	caza->addComponent<FighterCtrl>(10.0f, 0.4);
 	caza->addComponent<DeAcceleration>(0.95f);
 	caza->addComponent<Rotate>();
-	caza->addComponent<Gun>();
+	caza->addComponent<Gun>(2000);
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 }
 

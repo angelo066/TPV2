@@ -26,8 +26,8 @@ class ShowAtOpposieSide;
 
 // groups
 
-struct Group_1;
-#define _GRPS_LIST_  Group_1
+struct Bullet_grp;
+#define _GRPS_LIST_  Bullet_grp
 
 // handlers
 struct Hdlr_1;

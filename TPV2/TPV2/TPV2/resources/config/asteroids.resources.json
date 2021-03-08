@@ -6,7 +6,14 @@
   ],
   
   "images" : [
-    { "id" : "fighter", "file" : "resources/images/fighter.png" }
+    {
+      "id": "fighter",
+      "file": "resources/images/fighter.png"
+    },
+    {
+      "id": "bullet",
+      "file": "resources/images/bullet.png"
+    }
   ],
   
   "messages" : [
