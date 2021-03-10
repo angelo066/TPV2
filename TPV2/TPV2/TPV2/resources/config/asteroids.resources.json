@@ -4,8 +4,8 @@
     { "id" : "ARIAL16", "file" : "resources/fonts/ARIAL.ttf", "size": 16 },
     { "id" : "ARIAL24", "file" : "resources/fonts/ARIAL.ttf", "size": 24 }
   ],
-  
-  "images" : [
+
+  "images": [
     {
       "id": "fighter",
       "file": "resources/images/fighter.png"
@@ -13,6 +13,10 @@
     {
       "id": "bullet",
       "file": "resources/images/bullet.png"
+    },
+    {
+      "id": "asteroidA",
+      "file": "resources/images/asteroid.png"
     }
   ],
   

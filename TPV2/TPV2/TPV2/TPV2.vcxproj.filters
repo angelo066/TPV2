@@ -194,5 +194,8 @@
     <ClInclude Include="components\DisableOnExit.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\FrameImage.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

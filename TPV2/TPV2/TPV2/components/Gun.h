@@ -1,14 +1,8 @@
 #pragma once
-#include <SDL.h>
 #include <cassert>
 
 #include "..//components/DisableOnExit.h"
 #include "../ecs/Component.h"
-#include "../sdlutils/InputHandler.h"
-#include "../ecs/Entity.h"
-#include "Transform.h"
-#include "..//sdlutils/SDLUtils.h"
-
 #include "../ecs/Manager.h"
 
 

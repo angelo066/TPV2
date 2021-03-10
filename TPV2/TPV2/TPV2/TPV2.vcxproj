@@ -38,6 +38,7 @@
     <ClInclude Include="components\DeAcceleration.h" />
     <ClInclude Include="components\DisableOnExit.h" />
     <ClInclude Include="components\FighterCtrl.h" />
+    <ClInclude Include="components\FrameImage.h" />
     <ClInclude Include="components\Gun.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\Rectangle.h" />

@@ -1,12 +1,9 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
-
 #include "Game.h"
 
 #include "..//components/ShowAtOpposieSide.h"
-#include "..///components/Gun.h"
+#include "..//components/FrameImage.h"
 #include "..//components/DeAcceleration.h"
-#include "..//components/ShowAtOpposieSide.h"
-
 #include "..//components/Gun.h"
 #include "../components/CollideBounds.h"
 #include "../components/FighterCtrl.h"
@@ -32,10 +29,10 @@ Game::~Game() {
 void Game::init() {
 
 	SDLUtils::init("How mad are the Asteroids?", 800, 600,
-			"resources/config/asteroids.resources.json");
+		"resources/config/asteroids.resources.json");
 
 	auto* caza = mngr_->addEntity();
-									//Pos															//vel		//width, height, rotation
+	//Pos															//vel		//width, height, rotation
 	caza->addComponent<Transform>(Vector2D(sdlutils().width() / 2.0f, sdlutils().height() / 2.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	caza->addComponent<Image>(&sdlutils().images().at("fighter"));
 	caza->addComponent<FighterCtrl>(10.0f, 0.4);
@@ -45,7 +42,12 @@ void Game::init() {
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 
 
-	
+
+	auto* asteroid = mngr_->addEntity();
+	//Pos															//vel		//width, height, rotation
+	asteroid->addComponent<Transform>(Vector2D(sdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
+	asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
+
 }
 
 void Game::start() {

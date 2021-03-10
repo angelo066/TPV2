@@ -13,6 +13,7 @@ class DeAcceleration;
 class Gun;
 class ShowAtOpposieSide;
 class DisableOnExit;
+class FrameImage;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -24,6 +25,7 @@ class DisableOnExit;
 	DeAcceleration,\
 	Gun,\
 	ShowAtOpposieSide,\
+	FrameImage,\
 	DisableOnExit
 
 // groups
