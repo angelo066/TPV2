@@ -8,6 +8,19 @@
 
 #include "game/Game.h"
 
+//Plan de Scrum tope guapo			//Acabamos como máximo el día 1
+//Generations
+//Health
+//Todo el Game Manager
+//State
+//GameCtrl
+//AsteroidsManager
+//CollisionManager
+
+
+
+
+
 void start() {
 	Game g;
 
