@@ -14,6 +14,7 @@ class Gun;
 class ShowAtOpposieSide;
 class DisableOnExit;
 class FrameImage;
+class Follow;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -26,7 +27,8 @@ class FrameImage;
 	Gun,\
 	ShowAtOpposieSide,\
 	FrameImage,\
-	DisableOnExit
+	DisableOnExit,\
+	Follow
 
 // groups
 

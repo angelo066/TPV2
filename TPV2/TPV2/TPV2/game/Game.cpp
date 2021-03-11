@@ -1,6 +1,8 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 #include "Game.h"
 
+#include "..//components/Follow.h"
+#include "..///components/FramedImage.h"
 #include "..//components/ShowAtOpposieSide.h"
 #include "..//components/FrameImage.h"
 #include "..//components/DeAcceleration.h"
@@ -47,6 +49,8 @@ void Game::init() {
 	//Pos															//vel		//width, height, rotation
 	asteroid->addComponent<Transform>(Vector2D(sdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
+	asteroid->addComponent<Follow>(&caza->getComponent<Transform>()->getPos());
+
 
 }
 
