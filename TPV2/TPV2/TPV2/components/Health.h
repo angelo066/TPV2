@@ -34,6 +34,10 @@ public:
 		pos = Vector2D();
 	}
 
+	void lifeLost(int cuantity) { lives = lives - cuantity; }
+	void restoreLife() { lives = 3; }
+	int getLifes() { return lives; }
+
 private:
 	Transform* tr_;
 	int lives;
