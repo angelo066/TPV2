@@ -12,6 +12,7 @@
 #include "../components/Rotate.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
+#include "..//components/Health.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -42,7 +43,7 @@ void Game::init() {
 	caza->addComponent<Rotate>();
 	caza->addComponent<Gun>(2000);
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
-
+	caza->addComponent<Health>(&sdlutils().images().at("heart"));
 
 
 	auto* asteroid = mngr_->addEntity();

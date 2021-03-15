@@ -200,5 +200,8 @@
     <ClInclude Include="components\Follow.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\Health.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

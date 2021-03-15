@@ -17,6 +17,10 @@
     {
       "id": "asteroidA",
       "file": "resources/images/asteroid.png"
+    },
+    {
+      "id": "heart",
+      "file": "resources/images/heart.png"
     }
   ],
   

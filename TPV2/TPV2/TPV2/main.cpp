@@ -19,8 +19,6 @@
 
 
 
-
-
 void start() {
 	Game g;
 

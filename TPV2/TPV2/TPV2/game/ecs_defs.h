@@ -15,6 +15,7 @@ class ShowAtOpposieSide;
 class DisableOnExit;
 class FrameImage;
 class Follow;
+class Health;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -28,7 +29,8 @@ class Follow;
 	ShowAtOpposieSide,\
 	FrameImage,\
 	DisableOnExit,\
-	Follow
+	Follow,\
+	Health
 
 // groups
 

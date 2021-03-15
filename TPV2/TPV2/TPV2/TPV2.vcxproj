@@ -41,6 +41,7 @@
     <ClInclude Include="components\Follow.h" />
     <ClInclude Include="components\FrameImage.h" />
     <ClInclude Include="components\Gun.h" />
+    <ClInclude Include="components\Health.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\Rectangle.h" />
     <ClInclude Include="components\Rotate.h" />
