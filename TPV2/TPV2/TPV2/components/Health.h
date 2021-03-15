@@ -33,9 +33,9 @@ public:
 		pos_ = iniPos_;
 	}
 
-	void loseLife()
+	void loseLife(int cant = 1)
 	{
-		if (lives > 0) lives--;
+		if (lives > 0) lives-= cant;
 	}
 
 	void restoreLife()
