@@ -43,7 +43,7 @@ void Game::init() {
 	caza->addComponent<Rotate>();
 	caza->addComponent<Gun>(2000);
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
-	caza->addComponent<Health>(&sdlutils().images().at("heart"));
+	caza->addComponent<Health>();
 
 
 	auto* asteroid = mngr_->addEntity();

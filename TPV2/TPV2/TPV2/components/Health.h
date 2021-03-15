@@ -3,47 +3,54 @@
 
 #include "..//components/DisableOnExit.h"
 #include "../ecs/Component.h"
+#include"../sdlutils/SDLUtils.h"
 #include "../ecs/Manager.h"
 
 
 class Health : public Component {
 public:
-	Health(Texture* tex) :
-		tr_(nullptr), lives(3), t(tex), pos(Vector2D()){
+	Health(Vector2D pos = Vector2D(0, 0), Vector2D size = Vector2D(50, 50), const int h = 3, Texture* tex_ = &sdlutils().images().at("heart")) :
+		pos_(pos), size_(size), lives(h), initLives(lives), tex(tex_) {
 	}
 
 	virtual ~Health() {
-
 	}
 
 	void init() override {
-		tr_ = entity_->getComponent<Transform>();
-		assert(tr_ != nullptr);
+		iniPos_ = pos_;
+		mngr = entity_->getMngr();
+	}
 
+	void update() override {
 	}
 
 	void render() override {
-
 		for (int i = 0; i < lives; i++) {
-			SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
-
-			t->render(dest, 0);
-			pos.setX(pos.getX() + tr_->getW()); //Primero con (0,0) renderizas y luego lo cambias yo que se te me cuidas :)
+			SDL_Rect dest = build_sdlrect(pos_, size_.getX(), size_.getX());
+			tex->render(dest, 0.0f);
+			pos_.setX(pos_.getX() + size_.getX());
 		}
-
-		pos = Vector2D();
+		pos_ = iniPos_;
 	}
 
-	void lifeLost(int cuantity) { lives = lives - cuantity; }
-	void restoreLife() { lives = 3; }
-	int getLifes() { return lives; }
+	void loseLife()
+	{
+		if (lives > 0) lives--;
+	}
+
+	void restoreLife()
+	{
+		lives = initLives;
+	}
+
+	int getLives()
+	{
+		return lives;
+	}
 
 private:
-	Transform* tr_;
-	int lives;
-
-	Texture* t;
-	
-	Vector2D pos;
-}
-;
+	Vector2D pos_, iniPos_, size_;
+	Texture* tex;
+	Manager* mngr;
+	int lives, initLives;
+};
