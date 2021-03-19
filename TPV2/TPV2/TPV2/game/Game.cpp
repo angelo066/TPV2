@@ -34,8 +34,6 @@ void Game::init() {
 	SDLUtils::init("How mad are the Asteroids?", 800, 600,
 		"resources/config/asteroids.resources.json");
 
-	auto* gM = mngr_->addEntity();
-	gM->addComponent<AsteroidManager>();
 
 
 	auto* caza = mngr_->addEntity();
@@ -51,12 +49,14 @@ void Game::init() {
 
 	mngr_->setHandler<Player>(caza);
 
+	auto* gM = mngr_->addEntity();
+	gM->addComponent<AsteroidManager>();
 
-	//auto* asteroid = mngr_->addEntity();
-	////Pos															//vel		//width, height, rotation
-	//asteroid->addComponent<Transform>(Vector2D(sdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
-	//asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
-	//asteroid->addComponent<Follow>(&caza->getComponent<Transform>()->getPos());
+	auto* asteroid = mngr_->addEntity();
+	//Pos															//vel		//width, height, rotation
+	asteroid->addComponent<Transform>(Vector2D(sdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
+	asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
+	//asteroid->addComponent<Follow>();
 
 
 }

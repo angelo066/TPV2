@@ -24,8 +24,6 @@ public:
 		assert(tr_ != nullptr); 
 
 		playerPos = &entity_->getMngr()->getHandler<Player>()->getComponent<Transform>()->getVel();
-		//auto& vel = tr_->getVel();
-		//vel.set(Vector2D(1, 1));				//Inicializamos la velocidad porque si no es 0
 	}
 
 	void update() override {
