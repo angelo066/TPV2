@@ -23,7 +23,7 @@ public:
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr); 
 
-		playerPos = &entity_->getMngr()->getHandler<Player>()->getComponent<Transform>()->getVel();
+		playerPos = &entity_->getMngr()->getHandler<Player>()->getComponent<Transform>()->getPos();
 	}
 
 	void update() override {

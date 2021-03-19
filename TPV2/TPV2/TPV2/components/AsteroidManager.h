@@ -90,7 +90,7 @@ public:
 		asteroid->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 		asteroid->addComponent<Generations>(nGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
-		if (!isA)  asteroid->addComponent<Follow>();
+		if (!isA) asteroid->addComponent<Follow>();
 	}
 
 private:
