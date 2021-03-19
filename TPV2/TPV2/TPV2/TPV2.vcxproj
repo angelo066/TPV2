@@ -34,6 +34,7 @@
     <ClCompile Include="utils\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="components\AsteroidManager.h" />
     <ClInclude Include="components\CollideBounds.h" />
     <ClInclude Include="components\DeAcceleration.h" />
     <ClInclude Include="components\DisableOnExit.h" />

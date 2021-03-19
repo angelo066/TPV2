@@ -16,6 +16,7 @@ class DisableOnExit;
 class FrameImage;
 class Follow;
 class Health;
+class AsteroidManager;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -30,6 +31,7 @@ class Health;
 	FrameImage,\
 	DisableOnExit,\
 	Follow,\
+	AsteroidManager,\
 	Health
 
 // groups
