@@ -6,12 +6,14 @@
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Entity.h"
 #include "Transform.h"
+#include "../ecs/Manager.h"
 #include"../sdlutils/SDLUtils.h"
+
 
 class Follow : public Component {
 public:
-	Follow(Vector2D* playerP) :
-		tr_(nullptr), playerPos(playerP){
+	Follow() :
+		tr_(nullptr), playerPos(nullptr){
 	}
 	virtual ~Follow() {
 	}
@@ -20,8 +22,10 @@ public:
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr); 
-		auto& vel = tr_->getVel();
-		vel.set(Vector2D(1, 1));				//Inicializamos la velocidad porque si no es 0
+
+		playerPos = &entity_->getMngr()->getHandler<Player>()->getComponent<Transform>()->getVel();
+		//auto& vel = tr_->getVel();
+		//vel.set(Vector2D(1, 1));				//Inicializamos la velocidad porque si no es 0
 	}
 
 	void update() override {

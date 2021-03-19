@@ -17,6 +17,7 @@ class FrameImage;
 class Follow;
 class Health;
 class AsteroidManager;
+class Generations;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -32,6 +33,7 @@ class AsteroidManager;
 	DisableOnExit,\
 	Follow,\
 	AsteroidManager,\
+	Generations,\
 	Health
 
 // groups
@@ -40,5 +42,5 @@ struct Bullet_grp;
 #define _GRPS_LIST_  Bullet_grp
 
 // handlers
-struct Hdlr_1;
-#define _HDLRS_LIST_ Hdlr_1
+struct Player;
+#define _HDLRS_LIST_ Player

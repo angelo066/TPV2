@@ -7,6 +7,7 @@
 #include "../sdlutils/SDLUtils.h"
 
 #include "..//components/FrameImage.h"
+#include "..//components/Generations.h"
 #include "..//components/ShowAtOpposieSide.h"
 #include "..//components/Follow.h"
 #include "../ecs/Manager.h"
@@ -43,24 +44,21 @@ public:
 	{
 		asteroid->setActive(false);
 
-		if (asteroid->hasComponent<Generations>().getLeftGenerations() >= 2)
+		Generations n = asteroid->hasComponent<Generations>();
+		if (n.getLeftGenerations() >= 2)
 		{
 			for (int i = 0; i < 2; i++)
 				createAsteroids();
 		}
 	}
 
-	void createAsteroids()
-	{
+	void createAsteroids(){
 		generations_++;
 		int nGenerations = sdlutils().rand().nextInt(1, 4);
 		bool isA = (sdlutils().rand().nextInt(0, 10) < 3 ? true : false);
-
 		auto* asteroid = mngr_->addEntity();
-
 		//Random para saber en qué eje hacer el random de la posicion en los bordes
 		int posibility = sdlutils().rand().nextInt(0, 2);
-
 		//Centro de la pantalla
 		Vector2D center = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2);
 		//Posicion central de la pantalla aleatoria
@@ -82,7 +80,6 @@ public:
 			if (posibility == 0) pos.setX(0);
 			else pos.setX(sdlutils().width());
 		}
-
 		//Hacemos que vaya a la position aleatoria del centro
 		Vector2D v = Vector2D(finalPos - pos).normalize() * (sdlutils().rand().nextInt(1, 10) / 10.0);
 
@@ -92,10 +89,9 @@ public:
 		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
 
 		asteroid->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
-		//asteroid->addComponent<Generations>(nGenerations);
-
+		asteroid->addComponent<Generations>(nGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
-		//if (sdlutils().rand().nextInt(0, 10) < 3) asteroid->addComponent<Follow>(/*&caza->getComponent<Transform>()->getPos()*/);
+		if (!isA) asteroid->addComponent<Follow>();
 	}
 
 private:

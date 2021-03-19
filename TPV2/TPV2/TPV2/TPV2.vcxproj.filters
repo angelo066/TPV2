@@ -206,5 +206,8 @@
     <ClInclude Include="components\AsteroidManager.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\Generations.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

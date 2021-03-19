@@ -49,6 +49,8 @@ void Game::init() {
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 	caza->addComponent<Health>();
 
+	mngr_->setHandler<Player>(caza);
+
 
 	//auto* asteroid = mngr_->addEntity();
 	////Pos															//vel		//width, height, rotation
