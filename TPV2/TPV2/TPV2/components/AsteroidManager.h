@@ -14,7 +14,7 @@
 
 class AsteroidManager : public Component {
 public:
-	AsteroidManager(const int numAsteroids_ = 10, const int t_ = 5000, const float w = 50.0f, const float h = 50.0f) :
+	AsteroidManager(const int numAsteroids_ = 10, const int t_ = 5000, const float w = 20.0f, const float h = 20.0f) :
 		tr_(nullptr), time(t_), numAsteroids(numAsteroids_), widthAst_(w), heightAst_(h) {
 	}
 

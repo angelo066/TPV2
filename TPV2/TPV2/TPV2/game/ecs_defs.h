@@ -18,6 +18,7 @@ class Follow;
 class Health;
 class AsteroidManager;
 class Generations;
+class State;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -34,7 +35,8 @@ class Generations;
 	Follow,\
 	AsteroidManager,\
 	Generations,\
-	Health
+	Health,\
+	State
 
 // groups
 

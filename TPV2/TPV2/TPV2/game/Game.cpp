@@ -13,6 +13,7 @@
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "..//components/Health.h"
+#include "..//components/State.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -51,6 +52,7 @@ void Game::init() {
 
 	auto* gM = mngr_->addEntity();
 	gM->addComponent<AsteroidManager>();
+	gM->addComponent<State>();
 
 	auto* asteroid = mngr_->addEntity();
 	//Pos															//vel		//width, height, rotation
