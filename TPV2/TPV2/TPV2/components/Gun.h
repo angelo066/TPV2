@@ -54,5 +54,4 @@ private:
 	Manager* mngr;
 	float w, h, r, timer, lastTime;
 
-}
-;
+};

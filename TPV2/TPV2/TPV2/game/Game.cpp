@@ -48,6 +48,8 @@ void Game::init() {
 	caza->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 	caza->addComponent<Health>();
 
+
+	sdlutils().msgs().at("");
 	mngr_->setHandler<Player>(caza);
 
 	auto* gM = mngr_->addEntity();
@@ -56,7 +58,7 @@ void Game::init() {
 
 	auto* asteroid = mngr_->addEntity();
 	//Pos															//vel		//width, height, rotation
-	asteroid->addComponent<Transform>(Vector2D(sdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
+	asteroid->addComponent<Transform>(Vector2Dsdlutils().width() / 4.0f, sdlutils().height() / 4.0f), Vector2D(), 50.0f, 50.0f, 0.0f);
 	asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
 	//asteroid->addComponent<Follow>();
 
