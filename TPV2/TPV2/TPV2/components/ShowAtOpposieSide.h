@@ -2,7 +2,6 @@
 #include <SDL.h>
 #include <cassert>
 
-#include "../ecs/Component.h"
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Entity.h"
 #include "Transform.h"
@@ -15,8 +14,6 @@ public:
 	}
 	virtual ~ShowAtOpposieSide() {
 	}
-
-
 
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();

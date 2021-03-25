@@ -3,40 +3,42 @@
 #pragma once
 
 // components -- forward declaration, i.e., assume they are defined somewhere
+class ShowAtOpposieSide;
+class AsteroidManager;
+class DeAcceleration;
+class CollideBounds;
+class DisableOnExit;
+class FighterCtrl;
+class Generations;
+class FrameImage;
 class Transform;
 class Rectangle;
-class FighterCtrl;
-class CollideBounds;
-class Image;
-class Rotate;
-class DeAcceleration;
-class Gun;
-class ShowAtOpposieSide;
-class DisableOnExit;
-class FrameImage;
+class GameCtrl;
 class Follow;
+class Rotate;
 class Health;
-class AsteroidManager;
-class Generations;
 class State;
+class Image;
+class Gun;
 
 #define _CMPS_LIST_  \
+	ShowAtOpposieSide,\
+	AsteroidManager,\
+	DeAcceleration,\
+	CollideBounds,\
+	DisableOnExit,\
+	FighterCtrl,\
+	FrameImage,\
+	Generations,\
 	Transform,\
 	Rectangle,\
-	FighterCtrl,\
-	CollideBounds,\
-	Image,\
-	Rotate,\
-	DeAcceleration,\
-	Gun,\
-	ShowAtOpposieSide,\
-	FrameImage,\
-	DisableOnExit,\
+	GameCtrl,\
 	Follow,\
-	AsteroidManager,\
-	Generations,\
+	Rotate,\
 	Health,\
-	State
+	Image,\
+	State,\
+	Gun
 
 // groups
 

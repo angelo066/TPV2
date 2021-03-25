@@ -15,6 +15,10 @@ public:
 	virtual ~Game();
 	void init();
 	void start();
+
+	void createPlayer();
+	void createManager();
+	void createGameManager();
 private:
 	std::unique_ptr<Manager> mngr_;
 };

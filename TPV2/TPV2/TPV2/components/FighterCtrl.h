@@ -5,10 +5,8 @@
 #include <SDL.h>
 #include <cassert>
 
-#include "../ecs/Component.h"
 #include "../sdlutils/InputHandler.h"
-#include "../ecs/Entity.h"
-#include "Transform.h"
+#include "../ecs/ecs.h"
 #include"../sdlutils/SDLUtils.h"
 
 class FighterCtrl : public Component {

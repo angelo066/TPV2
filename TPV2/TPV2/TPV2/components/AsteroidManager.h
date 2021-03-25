@@ -25,7 +25,6 @@ public:
 		lastTime = sdlutils().currRealTime();
 		mngr_ = entity_->getMngr();
 
-		for (int i = 0; i < numAsteroids; i++) createAsteroids();
 	}
 
 	void update() override
@@ -91,6 +90,11 @@ public:
 		asteroid->addComponent<Generations>(nGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
 		if (!isA) asteroid->addComponent<Follow>();
+	}
+
+	void startGame()
+	{
+		for (int i = 0; i < numAsteroids; i++) createAsteroids();
 	}
 
 private:
