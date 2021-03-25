@@ -36,8 +36,6 @@ void Game::init() {
 	SDLUtils::init("How mad are the Asteroids?", 800, 600,
 		"resources/config/asteroids.resources.json");
 
-	createGameManager();
-
 	createPlayer();
 
 	createManager();
@@ -95,14 +93,7 @@ void Game::createManager(){
 	auto* gM = mngr_->addEntity();
 	gM->addComponent<AsteroidManager>();
 	gM->addComponent<State>();
-}
-
-void Game::createGameManager(){
-
-	auto* gM = mngr_->addEntity();
-
-	gM->addComponent<AsteroidManager>();
-	gM->addComponent<State>();
 	gM->addComponent<GameCtrl>();
 }
+
 

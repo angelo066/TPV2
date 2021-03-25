@@ -23,7 +23,7 @@ public:
 	
 	}
 
-	void update() {
+	void update() override {
 		if (ih().keyDownEvent()) {
 			//Si el jugador presiona la tecla espacio y no está jugando, cambia de estado 
 			if (ih().isKeyDown(SDL_SCANCODE_SPACE) && state_->getStates() != RUNNING){
