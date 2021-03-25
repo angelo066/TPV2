@@ -35,10 +35,12 @@ public:
 
 	void update() override {
 		for (Entity* e : entities_){
-			//if(e->hasGroup<Asteroid_grp>())
-			/*if (Collisions::collidesWithRotation()){
+			if (e->hasGroup<Asteroid_grp>()) {
+				if (Collisions::collidesWithRotation()){
 
-			}*/
+				}
+
+			}
 		}
 	}
 

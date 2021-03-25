@@ -43,7 +43,9 @@ class Gun;
 // groups
 
 struct Bullet_grp;
-#define _GRPS_LIST_  Bullet_grp
+struct Asteroid_grp;
+#define _GRPS_LIST_  Bullet_grp,\
+Asteroid_grp
 
 // handlers
 struct Player;

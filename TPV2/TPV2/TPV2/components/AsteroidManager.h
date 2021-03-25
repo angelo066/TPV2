@@ -39,25 +39,60 @@ public:
 
 	inline int getGenerations() { return generations_; }
 
-	void onCollision(Entity* asteroid){
+	void onCollision(Entity* asteroid)
+	{
+		//Desactivas asteroide
 		asteroid->setActive(false);
 
+		//COmponente generatios, se le resta y se comprueba si tiene
 		Generations* n = asteroid->getComponent<Generations>();
 		n->substractGenerations();
 
 		if (n->getLeftGenerations() > 0){
 			for (int i = 0; i < 2; i++)
-			{
-				divideAsteroid(asteroid->hasComponent<Follow>(), n->getLeftGenerations(), asteroid);
-			}
+				divideAsteroide(asteroid->hasComponent<Follow>(), asteroid, n->getLeftGenerations());
 		}
+	}
+
+	void divideAsteroide(bool golden, Entity* father, int nGenerations) {
+		generations_++;
+
+		auto* asteroid = mngr_->addEntity();
+
+		Transform* t = father->getComponent<Transform>();
+
+		float r = sdlutils().rand().nextInt(0, 360);
+
+		Vector2D pos = t->getPos() + t->getVel().rotate(r) * 2 * t->getW();
+		Vector2D v = t->getVel().rotate(r) * 1.1f;
+
+
+
+		Vector2D center = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2);
+		//Posicion central de la pantalla aleatoria
+		Vector2D finalPos = Vector2D(center.getX() + sdlutils().rand().nextInt(-100, 100), center.getY() + sdlutils().rand().nextInt(-100, 100));
+
+
+		asteroid->addComponent<Transform>(pos, v, widthAst_ + 5 * nGenerations, heightAst_ + 5 * nGenerations, 0.0f);
+
+
+		if (!golden) asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
+		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
+
+
+		asteroid->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
+		asteroid->addComponent<Generations>(nGenerations);
+		//Si es de tipo B, hacemos que siga al jugador
+		if (golden) asteroid->addComponent<Follow>();
+
+		asteroid->setGroup<Asteroid_grp>(true);
 	}
 
 	void createAsteroids(int nGenerations = sdlutils().rand().nextInt(1, 4)){
 		generations_++;
 		bool isA = (sdlutils().rand().nextInt(0, 10) < 3 ? true : false);
 		auto* asteroid = mngr_->addEntity();
-		//Random para saber en qué eje hacer el random de la posicion en los bordes
+		//Random para saber en quï¿½ eje hacer el random de la posicion en los bordes
 		int posibility = sdlutils().rand().nextInt(0, 2);
 		//Centro de la pantalla
 		Vector2D center = Vector2D(sdlutils().width() / 2, sdlutils().height() / 2);
@@ -91,6 +126,9 @@ public:
 		asteroid->addComponent<Generations>(nGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
 		if (!isA) asteroid->addComponent<Follow>();
+
+		asteroid->setGroup<Asteroid_grp>(true);
+
 	}
 
 	void divideAsteroid(bool golden,const int & numGenerations, Entity* ast){
