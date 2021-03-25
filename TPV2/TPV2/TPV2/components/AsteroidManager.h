@@ -28,8 +28,7 @@ public:
 		s = entity_->getComponent<State>();
 	}
 
-	void update() override
-	{
+	void update() override{
 		if (sdlutils().currRealTime() - lastTime>= time && s->getStates() == RUNNING)
 		{
 			lastTime = sdlutils().currRealTime();
@@ -40,16 +39,17 @@ public:
 
 	inline int getGenerations() { return generations_; }
 
-	void onCollision(Entity* asteroid)
-	{
+	void onCollision(Entity* asteroid){
 		asteroid->setActive(false);
 
-		Generations n = asteroid->hasComponent<Generations>();
-		n.substractGenerations();
+		Generations* n = asteroid->getComponent<Generations>();
+		n->substractGenerations();
 
-		if (n.getLeftGenerations() >= 2){
+		if (n->getLeftGenerations() > 0){
 			for (int i = 0; i < 2; i++)
-				createAsteroids(n.getLeftGenerations());
+			{
+				divideAsteroid(asteroid->hasComponent<Follow>(), n->getLeftGenerations(), asteroid);
+			}
 		}
 	}
 
@@ -82,7 +82,7 @@ public:
 		}
 		//Hacemos que vaya a la position aleatoria del centro
 		Vector2D v = Vector2D(finalPos - pos).normalize() * (sdlutils().rand().nextInt(1, 10) / 10.0);
-		asteroid->addComponent<Transform>(pos, v, widthAst_ + 5 * nGenerations, heightAst_ + 5 * nGenerations, 0.0f);
+		asteroid->addComponent<Transform>(pos, v, widthAst_ + 5.0f * nGenerations, heightAst_ + 5 * nGenerations, 0.0f);
 
 		if(isA) asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
 		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
@@ -93,8 +93,30 @@ public:
 		if (!isA) asteroid->addComponent<Follow>();
 	}
 
-	void startGame()
-	{
+	void divideAsteroid(bool golden,const int & numGenerations, Entity* ast){
+		generations_++;
+		Transform* t = ast->getComponent<Transform>();
+		Vector2D p = t->getPos();
+		Vector2D v = t->getVel();
+		float width = t->getW();
+
+		int r = sdlutils().rand().nextInt(0, 360);
+		Vector2D astPos = p + v.rotate(r) * 2 * width;
+		Vector2D astVel = v.rotate(r) * 1.1f;
+
+		auto* asteroid = mngr_->addEntity();
+		asteroid->addComponent<Transform>(astPos, astPos, widthAst_ + 5.0f * numGenerations, heightAst_ + 5 * numGenerations, 0.0f);
+
+		if (!golden) asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
+		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
+
+		asteroid->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
+		asteroid->addComponent<Generations>(numGenerations);
+		//Si es de tipo B, hacemos que siga al jugador
+		if (!golden) asteroid->addComponent<Follow>();
+	}
+
+	void startGame(){
 		for (int i = 0; i < numAsteroids; i++) createAsteroids();
 	}
 
