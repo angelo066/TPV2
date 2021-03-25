@@ -11,6 +11,7 @@
 #include "..//components/ShowAtOpposieSide.h"
 #include "..//components/Follow.h"
 #include "../ecs/Manager.h"
+#include "..//components/State.h"
 
 class AsteroidManager : public Component {
 public:
@@ -24,12 +25,12 @@ public:
 	void init() override {
 		lastTime = sdlutils().currRealTime();
 		mngr_ = entity_->getMngr();
-
+		s = entity_->getComponent<State>();
 	}
 
 	void update() override
 	{
-		if (sdlutils().currRealTime() - lastTime>= time)
+		if (sdlutils().currRealTime() - lastTime>= time && s->getStates() == RUNNING)
 		{
 			lastTime = sdlutils().currRealTime();
 			createAsteroids();
@@ -102,4 +103,6 @@ private:
 	Manager* mngr_;
 	int generations_, time, lastTime, numAsteroids;
 	float widthAst_, heightAst_;
+
+	State* s;
 };

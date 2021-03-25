@@ -91,8 +91,8 @@ void Game::createPlayer(){
 
 void Game::createManager(){
 	auto* gM = mngr_->addEntity();
-	gM->addComponent<AsteroidManager>();
 	gM->addComponent<State>();
+	gM->addComponent<AsteroidManager>();
 	gM->addComponent<GameCtrl>();
 }
 
