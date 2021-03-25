@@ -63,6 +63,8 @@ public:
 				if (Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(),t->getRot() ,
 									playerT_->getPos(), playerT_->getW(), playerT_->getH(), playerT_->getRot()))
 				{
+
+					sdlutils().soundEffects().at("explosion").play();
 					if (health_->getLives() > 0){
 						state_->setStates(PAUSED);
 						health_->loseLife();

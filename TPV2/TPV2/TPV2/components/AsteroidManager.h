@@ -116,6 +116,8 @@ public:
 		asteroid->addComponent<Generations>(numGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
 		if (golden) asteroid->addComponent<Follow>();
+
+		asteroid->setGroup<Asteroid_grp>(true);
 	}
 
 	void startGame(){
