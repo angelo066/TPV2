@@ -1,36 +1,36 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #pragma once
-#include "Transform.h"
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 
 
+#include "Transform.h"
 #include "Health.h"
 #include "State.h"
+#include "AsteroidManager.h"
 #include "../sdlutils/SDLUtils.h"
 
 #include "../utils/Collisions.h"
 
 
-class CollisionManager : public Component {
+class CollisionsManager : public Component {
 public:
-	CollisionManager(){
+	CollisionsManager(){
 
 	}
 
-	virtual ~CollisionManager() {
+	virtual ~CollisionsManager() {
 
 	}
 
 	void init() override {
-		mngr_ = entity_->getComponent<Manager>();
-		entities_ = mngr_->getEnteties();
+		mngr_ = entity_->getMngr();
 		player = mngr_->getHandler<Player>();
 		playerT_ = player->getComponent<Transform>();
 		health_ = player->getComponent<Health>();
-
+		astMngr_ = entity_->getComponent<AsteroidManager>();
 
 		state_ = entity_->getComponent<State>();
 	}
@@ -40,13 +40,23 @@ public:
 	}
 
 	void update() override {
-		for (Entity* e : entities_){
-			if (e->hasGroup<Asteroid_grp>())
-			{
-				Transform* t = e->getComponent<Transform>();
-				for (Entity* e : entities_){
-					if (e->hasGroup<Bullet_grp>()){
+		entities_ = mngr_->getEnteties();
 
+		for (Entity* e : entities_){
+			if (e->hasGroup<Asteroid_grp>() /*|| e->hasComponent<Generations>()*/){
+				Transform* t = e->getComponent<Transform>();
+				for (Entity* bala : entities_){
+					if (bala->hasGroup<Bullet_grp>()){
+						Transform* balaT = bala->getComponent<Transform>();
+
+						if(Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(), t->getRot(),
+							balaT->getPos(), balaT->getW(), balaT->getH(), balaT->getRot()))
+						{
+							e->setActive(false);
+							bala->setActive(false);
+
+							astMngr_->onCollision(e);
+						}
 					}
 				}
 
@@ -78,7 +88,7 @@ public:
 	{
 
 	}
-
+	
 private:
 	std::vector<Entity*> entities_;
 	Manager* mngr_;
@@ -86,5 +96,6 @@ private:
 	Entity* player;
 	Health* health_;
 	State* state_;
+	AsteroidManager* astMngr_;
 	Transform* playerT_;
 };

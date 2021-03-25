@@ -2,6 +2,7 @@
 #include "Game.h"
 
 #include "../components/ShowAtOpposieSide.h"
+#include "../components/CollisionsManager.h"
 #include "../components/AsteroidManager.h"
 #include "../components/DeAcceleration.h"
 #include "../components/CollideBounds.h"
@@ -94,6 +95,7 @@ void Game::createManager(){
 	gM->addComponent<State>();
 	gM->addComponent<AsteroidManager>();
 	gM->addComponent<GameCtrl>();
+	gM->addComponent<CollisionsManager>();
 }
 
 

@@ -20,9 +20,11 @@ class Health;
 class State;
 class Image;
 class Gun;
+class CollisionsManager;
 
 #define _CMPS_LIST_  \
 	ShowAtOpposieSide,\
+	CollisionsManager,\
 	AsteroidManager,\
 	DeAcceleration,\
 	CollideBounds,\
