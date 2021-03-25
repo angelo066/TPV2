@@ -82,6 +82,7 @@ public:
 				}
 			}
 		}
+		entities_ = mngr_->getEnteties();
 	}
 
 	void asteroidCollides(Entity* e)

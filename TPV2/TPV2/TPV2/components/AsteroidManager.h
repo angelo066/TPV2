@@ -46,7 +46,7 @@ public:
 		Generations* n = asteroid->getComponent<Generations>();
 		n->substractGenerations();
 
-		if (n->getLeftGenerations() > 0){
+		if (n->getLeftGenerations() > 0) {
 			for (int i = 0; i < 2; i++)
 				divideAsteroid(asteroid->hasComponent<Follow>(), n->getLeftGenerations(), asteroid);
 		}
@@ -107,7 +107,7 @@ public:
 		Vector2D astVel = v.rotate(r) * 1.1f;
 
 		auto* asteroid = mngr_->addEntity();
-		asteroid->addComponent<Transform>(astPos, astPos, widthAst_ + 5.0f * numGenerations, heightAst_ + 5 * numGenerations, 0.0f);
+		asteroid->addComponent<Transform>(astPos, astVel, widthAst_ + 5.0f * numGenerations, heightAst_ + 5 * numGenerations, 0.0f);
 
 		if (!golden) asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
 		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
@@ -115,7 +115,7 @@ public:
 		asteroid->addComponent<ShowAtOpposieSide>(Vector2D(sdlutils().width(), sdlutils().height()));
 		asteroid->addComponent<Generations>(numGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
-		if (!golden) asteroid->addComponent<Follow>();
+		if (golden) asteroid->addComponent<Follow>();
 	}
 
 	void startGame(){
