@@ -19,7 +19,6 @@ public:
 	}
 
 	void update() override {
-
 		auto &pos = tr_->getPos();
 		auto &vel = tr_->getVel();
 		auto w = tr_->getW();

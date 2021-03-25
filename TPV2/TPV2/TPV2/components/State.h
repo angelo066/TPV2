@@ -23,7 +23,7 @@ public:
 
 	}
 
-	void render() {
+	void render() override {
 		// message when game is not running
 		
 
