@@ -67,7 +67,7 @@ public:
 						state_->setStates(PAUSED);
 						health_->loseLife();
 
-						playerT_->getPos().set(sdlutils().width()/2, sdlutils().height() / 2);
+						playerT_->getPos().set(sdlutils().width()/2 - playerT_->getW()/2.0f, sdlutils().height() / 2 - playerT_->getH() / 2.0f);
 						playerT_->setRot(0);
 						playerT_->getVel().set(0.0f, 0.0f);
 					}
