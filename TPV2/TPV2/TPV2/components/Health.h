@@ -33,18 +33,26 @@ public:
 		pos_ = iniPos_;
 	}
 
-	void loseLife(int cant = 1)
-	{
+	/// <summary>
+	/// Disminuye en cierta cantidad las vidas del jugador
+	/// </summary>
+	/// <param name="cant"> cantidad a reducir. Por defecto es una unidad</param>
+	void loseLife(int cant = 1){
 		if (lives > 0) lives-= cant;
 	}
 
-	void restoreLife()
-	{
+	/// <summary>
+	/// Restaura las vidas iniciales al jugador
+	/// </summary>
+	void restoreLife(){
 		lives = initLives;
 	}
 
-	int getLives()
-	{
+	/// <summary>
+	/// Devuelve las vidas restantes del jugador
+	/// </summary>
+	/// <returns></returns>
+	int getLives(){
 		return lives;
 	}
 

@@ -17,9 +17,7 @@
 
 class CollisionsManager : public Component {
 public:
-	CollisionsManager(){
-
-	}
+	CollisionsManager() {};
 
 	virtual ~CollisionsManager() {
 
@@ -33,10 +31,6 @@ public:
 		state_ = entity_->getComponent<State>();
 	}
 
-	void render() override {
-
-	}
-
 	void ActPlayer() {
 		player = mngr_->getHandler<Player>();
 		playerT_ = player->getComponent<Transform>();
@@ -45,65 +39,50 @@ public:
 
 	void update() override {
 		entities_ = mngr_->getEnteties();
-
 		for (Entity* e : entities_){
-			if (e->hasGroup<Asteroid_grp>() /*|| e->hasComponent<Generations>()*/){
+			if (e->hasGroup<Asteroid_grp>()){
 				Transform* t = e->getComponent<Transform>();
 				for (Entity* bala : entities_){
 					if (bala->hasGroup<Bullet_grp>()){
 						Transform* balaT = bala->getComponent<Transform>();
-
-						if(Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(), t->getRot(),
-							balaT->getPos(), balaT->getW(), balaT->getH(), balaT->getRot()))
-						{
+						if(checkCollision(t, balaT)){
 							e->setActive(false);
 							bala->setActive(false);
-
 							astMngr_->onCollision(e);
 						}
 					}
 				}
 
-				if (Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(),t->getRot() ,
-									playerT_->getPos(), playerT_->getW(), playerT_->getH(), playerT_->getRot()))
-				{
-
+				if (checkCollision(t, playerT_)){
 					health_->loseLife();
 					sdlutils().soundEffects().at("explosion").play();
 					if (health_->getLives() > 0){
 						state_->setStates(PAUSED);
-
 						playerT_->getPos().set(sdlutils().width()/2 - playerT_->getW()/2.0f, sdlutils().height() / 2 - playerT_->getH() / 2.0f);
 						playerT_->setRot(0);
 						playerT_->getVel().set(0.0f, 0.0f);
 					}
 					else{
 						state_->setStates(GAMEOVER);
-
 						player->getComponent<Health>()->restoreLife();
 						player->setActive(false);
-
-						
 					}
-
-					for (Entity* enti : entities_) {
+					for (Entity* enti : entities_)
 						if (enti->hasGroup<Asteroid_grp>() || enti->hasGroup<Bullet_grp>()) enti->setActive(false);
-					}
 				}
 			}
 		}
 		entities_ = mngr_->getEnteties();
 	}
 
-	void asteroidCollides(Entity* e)
-	{
-
+	bool checkCollision(Transform* t, Transform* other){
+		return (Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(), t->getRot(),
+			other->getPos(), other->getW(), other->getH(), other->getRot()));
 	}
 	
 private:
 	std::vector<Entity*> entities_;
 	Manager* mngr_;
-
 	Entity* player;
 	Health* health_;
 	State* state_;
