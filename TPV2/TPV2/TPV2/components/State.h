@@ -23,22 +23,21 @@ public:
 		win = false;
 	}
 
+	
 	void render() override {
 		// message when game is not running
 		
-
+		//Si no está corriendo escribimos mensaje
 		if (s != RUNNING) {
-			//auto gm = static_cast<GameManager*>(c);
-			//auto& state = gm->getState();
 
 			// game over message
 			if (s == GAMEOVER) {
-
+				//Mensaje si pierde
 				if (!win) {
 					auto& t = sdlutils().msgs().at("gameover");
 					t.render((sdlutils().width() - t.width()) / 2,
 						(sdlutils().height() - t.height()) / 2 - 100);
-				}
+				}//Mensaje si gana
 				else {
 					auto& t = sdlutils().msgs().at("win");
 					t.render((sdlutils().width() - t.width()) / 2,
@@ -60,19 +59,20 @@ public:
 		}
 
 	}
-
+	//Devuelve el estado del juego
 	States getStates()
 	{
 		return s;
 	}
-	
+	//Cambia el estado del juego
 	void setStates(States stat)
 	{
 		s = stat;
 	}
-
+	//Determina si el jugador ha ganado
 	void setWin() { win = true; }
 
+	//Devuelve si el jugador ha ganado
 	bool getWin() { return win; }
 
 private:

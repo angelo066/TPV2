@@ -164,22 +164,13 @@
     <ClInclude Include="game\Game.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
-    <ClInclude Include="components\Rectangle.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\Transform.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\Image.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\CollideBounds.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\DeAcceleration.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\Rotate.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\FighterCtrl.h">

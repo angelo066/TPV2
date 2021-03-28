@@ -25,9 +25,9 @@ public:
 	void update() override {
 
 		//Disparo
-		if (ih().keyDownEvent()) {
-			if (ih().isKeyDown(SDLK_s)) {
-				if (sdlutils().currRealTime() - lastTime  > timer)
+		if (ih().keyDownEvent()) {//Chequeamos input
+			if (ih().isKeyDown(SDLK_s)) {//Chequeamos que sea el espacio
+				if (sdlutils().currRealTime() - lastTime  > timer)	//Chequea que ha pasado sufieiente tiempo
 				{
 					lastTime = sdlutils().currRealTime();
 

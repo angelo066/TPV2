@@ -27,7 +27,7 @@ public:
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr);
 	}
-
+	
 	void update() override {
 		if (ih().keyDownEvent()) {
 			auto& vel = tr_->getVel();

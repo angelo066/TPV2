@@ -11,18 +11,9 @@ public:
 
 	virtual ~Generations() {
 	}
-
-
-	void init() override {
-
-	}
-
-	void update() override {
-
-	}
-
+	//Devolvemos las generaciones que quedan
 	inline int getLeftGenerations() { return generations_; }
-
+	//Restamos una a generación
 	void substractGenerations() { --generations_; }
 
 private:

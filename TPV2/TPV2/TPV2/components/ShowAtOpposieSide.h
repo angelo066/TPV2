@@ -51,6 +51,6 @@ public:
 
 private:
 	Transform* tr_;
-	Vector2D windowProps;
+	Vector2D windowProps; //Para no tener que chequear en cada update
 }
 ;
