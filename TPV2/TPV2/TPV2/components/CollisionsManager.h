@@ -64,10 +64,10 @@ public:
 									playerT_->getPos(), playerT_->getW(), playerT_->getH(), playerT_->getRot()))
 				{
 
+					health_->loseLife();
 					sdlutils().soundEffects().at("explosion").play();
 					if (health_->getLives() > 0){
 						state_->setStates(PAUSED);
-						health_->loseLife();
 
 						playerT_->getPos().set(sdlutils().width()/2 - playerT_->getW()/2.0f, sdlutils().height() / 2 - playerT_->getH() / 2.0f);
 						playerT_->setRot(0);
@@ -75,7 +75,11 @@ public:
 					}
 					else{
 						state_->setStates(GAMEOVER);
+
+						player->getComponent<Health>()->restoreLife();
 						player->setActive(false);
+
+						
 					}
 
 					for (Entity* enti : entities_) {

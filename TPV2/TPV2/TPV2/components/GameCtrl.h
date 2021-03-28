@@ -27,9 +27,22 @@ public:
 		if (ih().keyDownEvent()) {
 			//Si el jugador presiona la tecla espacio y no está jugando, cambia de estado 
 			if (ih().isKeyDown(SDL_SCANCODE_SPACE) && state_->getStates() != RUNNING){
-				state_->setStates(RUNNING);
-				//Se instancian 10 asteroides posicionados aleatoriamente en los bordes de la pantalla
-				astMngr_->startGame();
+				if (state_->getStates() == GAMEOVER) {
+					auto* p = entity_->getMngr()->getHandler<Player>();
+
+					p->setActive(true);
+
+					state_->setStates(NEWGAME);
+				}
+				else {
+					state_->setStates(RUNNING);
+					//Se instancian 10 asteroides posicionados aleatoriamente en los bordes de la pantalla
+					astMngr_->startGame();
+
+				}
+
+
+				
 			}
 		}
 	}
