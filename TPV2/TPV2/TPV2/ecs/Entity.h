@@ -85,6 +85,7 @@ public:
 		return mngr_;
 	}
 
+
 	inline bool isActive() const {
 		return active_;
 	}

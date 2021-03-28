@@ -20,7 +20,7 @@ public:
 
 
 	void init() override {
-
+		win = false;
 	}
 
 	void render() override {
@@ -33,9 +33,17 @@ public:
 
 			// game over message
 			if (s == GAMEOVER) {
-				auto& t = sdlutils().msgs().at("gameover");
-				t.render((sdlutils().width() - t.width()) / 2,
-					(sdlutils().height() - t.height()) / 2);
+
+				if (!win) {
+					auto& t = sdlutils().msgs().at("gameover");
+					t.render((sdlutils().width() - t.width()) / 2,
+						(sdlutils().height() - t.height()) / 2 - 100);
+				}
+				else {
+					auto& t = sdlutils().msgs().at("win");
+					t.render((sdlutils().width() - t.width()) / 2,
+						(sdlutils().height() - t.height()) / 2 - 100);
+				}
 			}
 
 			// new game message
@@ -63,7 +71,13 @@ public:
 		s = stat;
 	}
 
+	void setWin() { win = true; }
+
+	bool getWin() { return win; }
+
 private:
 	States s;
+
+	bool win;
 }
 ;

@@ -1,21 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 #include "Game.h"
 
-#include "../components/ShowAtOpposieSide.h"
-#include "../components/CollisionsManager.h"
-#include "../components/AsteroidManager.h"
-#include "../components/DeAcceleration.h"
-#include "../components/CollideBounds.h"
-#include "../components/FighterCtrl.h"
-#include "../components/FrameImage.h"
-#include "../components/Transform.h"
 #include "../components/GameCtrl.h"
-#include "../components/Health.h"
-#include "../components/Rotate.h"
-#include "../components/Follow.h"
-#include "../components/State.h"
-#include "../components/Image.h"
-#include "../components/Gun.h"
 
 #include "../ecs/Manager.h"
 #include "../ecs/Entity.h"

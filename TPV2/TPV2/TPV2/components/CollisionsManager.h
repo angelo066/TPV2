@@ -27,9 +27,7 @@ public:
 
 	void init() override {
 		mngr_ = entity_->getMngr();
-		player = mngr_->getHandler<Player>();
-		playerT_ = player->getComponent<Transform>();
-		health_ = player->getComponent<Health>();
+		ActPlayer();
 		astMngr_ = entity_->getComponent<AsteroidManager>();
 
 		state_ = entity_->getComponent<State>();
@@ -37,6 +35,12 @@ public:
 
 	void render() override {
 
+	}
+
+	void ActPlayer() {
+		player = mngr_->getHandler<Player>();
+		playerT_ = player->getComponent<Transform>();
+		health_ = player->getComponent<Health>();
 	}
 
 	void update() override {

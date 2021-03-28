@@ -15,7 +15,7 @@
 
 class AsteroidManager : public Component {
 public:
-	AsteroidManager(const int numAsteroids_ = 10, const int t_ = 5000, const float w = 20.0f, const float h = 20.0f) :
+	AsteroidManager(const int numAsteroids_ = 1, const int t_ = 50000000, const float w = 20.0f, const float h = 20.0f) :
 		tr_(nullptr), time(t_), numAsteroids(numAsteroids_), widthAst_(w), heightAst_(h) {
 	}
 
@@ -29,10 +29,15 @@ public:
 	}
 
 	void update() override{
-		if (sdlutils().currRealTime() - lastTime>= time && s->getStates() == RUNNING){
+		if (sdlutils().currRealTime() - lastTime>= time && s->getStates() == RUNNING && generations_ > 0){
 			lastTime = sdlutils().currRealTime();
 			createAsteroids();
 		}
+		else if(s->getStates() == RUNNING && generations_ <= 0) {
+			s->setWin();
+			s->setStates(GAMEOVER);
+		}
+		
 	}
 
 
@@ -41,7 +46,7 @@ public:
 	void onCollision(Entity* asteroid){
 		//Desactivas asteroide
 		asteroid->setActive(false);
-
+		generations_--;
 		//COmponente generatios, se le resta y se comprueba si tiene
 		Generations* n = asteroid->getComponent<Generations>();
 		n->substractGenerations();
