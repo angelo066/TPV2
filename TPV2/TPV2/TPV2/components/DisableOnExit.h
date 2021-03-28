@@ -20,15 +20,12 @@ public:
 	}
 
 	void update() override {
-
 		auto& pos = tr_->getPos();
 		auto& vel = tr_->getVel();
 		auto w = tr_->getW();
 		auto h = tr_->getH();
-
 		if (pos.getX() < 0 || pos.getX() + w > sdlutils().width()|| pos.getY() < 0 || pos.getY() + h > sdlutils().height()) {
 			entity_->setActive(false);
-			//vel.setX(-vel.getX());
 		}
 	}
 

@@ -17,6 +17,7 @@ public:
 		sizeXF = tex_->width() / cols;
 		sizeYF = tex_->height() / rows;
 
+		//Rectangulo base
 		src_ = { sizeXF * c, sizeYF * r, sizeXF, sizeYF };
 
 		posX = c;
@@ -40,15 +41,11 @@ public:
 		tex_->render(src_, dest, tr_->getRot());
 	}
 
-	void update() override
-	{
-		if (sdlutils().currRealTime() - lastTime > timer)
-		{
+	void update() override{
+		if (sdlutils().currRealTime() - lastTime > timer){
+			//Actualizamos los frames de la textura a renderizar, pasados uno un rateFrame 
 			lastTime = sdlutils().currRealTime();
-
-			if (posX != wholeSize.getX() - 1){
-				++posX;
-			}
+			if (posX != wholeSize.getX() - 1) ++posX;
 			else{
 				if (posY != wholeSize.getY() - 1 ){
 					++posY;

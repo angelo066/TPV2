@@ -32,6 +32,7 @@ public:
 		if (ih().keyDownEvent()) {
 			
 			if (ih().isKeyDown(SDL_SCANCODE_UP)) {
+				//Avanza hacia arriba y rotamos el vector dirección para que apunte hacia donde apunta el caza
 				vel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thurst_;
 				sdlutils().soundEffects().at("thrust").play();
 			}

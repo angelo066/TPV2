@@ -18,19 +18,17 @@ public:
 	virtual ~Follow() {
 	}
 
-
 	void init() override {
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr); 
-
 		playerPos = &entity_->getMngr()->getHandler<Player>()->getComponent<Transform>()->getPos();
 	}
 
 	void update() override {
 		auto& vel = tr_->getVel();
 		Vector2D p = tr_->getPos();
-
-		//Fórmula del pdf         Este question mark significa que si la variable se cumple se aplica lo de la izquierda y si no lo de la derecha
+		//Fórmula del pdf         Nota: Este question mark significa que si la variable se cumple se aplica lo de la izquierda y si no lo de la derecha
+		//Asignamos la velocidad y su dirección en función de la posición del player
 		vel.set(vel.rotate(vel.angle(*playerPos - p) > 0 ? 1.0f : -1.0f));
 	}
 

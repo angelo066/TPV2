@@ -74,7 +74,12 @@ public:
 		}
 		entities_ = mngr_->getEnteties();
 	}
-
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="t"></param>
+	/// <param name="other"></param>
+	/// <returns></returns>
 	bool checkCollision(Transform* t, Transform* other){
 		return (Collisions::collidesWithRotation(t->getPos(), t->getW(), t->getH(), t->getRot(),
 			other->getPos(), other->getW(), other->getH(), other->getRot()));

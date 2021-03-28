@@ -40,14 +40,21 @@ public:
 		
 	}
 
-
+	/// <summary>
+	/// Devuelve el número de generaciones de asteroides actuales
+	/// </summary>
+	/// <returns>int</returns>
 	inline int getGenerations() { return generations_; }
 
+	/// <summary>
+	/// Divide el asteroide al haber colisionado con una bala
+	/// </summary>
+	/// <param name="asteroid">Asteroide que ha colisionado</param>
 	void onCollision(Entity* asteroid){
 		//Desactivas asteroide
 		asteroid->setActive(false);
 		generations_--;
-		//COmponente generatios, se le resta y se comprueba si tiene
+		//Componente generatios, se le resta y se comprueba si tiene
 		Generations* n = asteroid->getComponent<Generations>();
 		n->substractGenerations();
 
@@ -57,6 +64,10 @@ public:
 		}
 	}
 
+	/// <summary>
+	/// Crea un asteroide alrededor de los bordes de la pantalla
+	/// </summary>
+	/// <param name="nGenerations">Número de generaciones disponibles iniciales</param>
 	void createAsteroids(int nGenerations = sdlutils().rand().nextInt(1, 4)){
 		generations_++;
 		bool isA = (sdlutils().rand().nextInt(0, 10) < 3 ? true : false);
@@ -87,7 +98,7 @@ public:
 		//Hacemos que vaya a la position aleatoria del centro
 		Vector2D v = Vector2D(finalPos - pos).normalize() * (sdlutils().rand().nextInt(1, 10) / 10.0);
 		asteroid->addComponent<Transform>(pos, v, widthAst_ + 5.0f * nGenerations, heightAst_ + 5 * nGenerations, 0.0f);
-
+		//Diferenciamos entre tipo A o B
 		if(isA) asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidA"), 5, 6, 0, 0, 50.0f);
 		else asteroid->addComponent<FrameImage>(&sdlutils().images().at("asteroidB"), 5, 6, 0, 0, 50.0f);
 
@@ -95,11 +106,15 @@ public:
 		asteroid->addComponent<Generations>(nGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
 		if (!isA) asteroid->addComponent<Follow>();
-
+		//Asignamos su grupo
 		asteroid->setGroup<Asteroid_grp>(true);
-
 	}
-
+	/// <summary>
+	/// Divide un asteroide si es posible, en dos más pequeños
+	/// </summary>
+	/// <param name="golden">es de tipo B</param>
+	/// <param name="numGenerations">generaciones restantes del padre</param>
+	/// <param name="ast">asteroide padre</param>
 	void divideAsteroid(bool golden,const int & numGenerations, Entity* ast){
 		generations_++;
 		Transform* t = ast->getComponent<Transform>();
@@ -121,10 +136,12 @@ public:
 		asteroid->addComponent<Generations>(numGenerations);
 		//Si es de tipo B, hacemos que siga al jugador
 		if (golden) asteroid->addComponent<Follow>();
-
+		//Asignamos su grupo
 		asteroid->setGroup<Asteroid_grp>(true);
 	}
-
+	/// <summary>
+	/// Empieza el juego generando numAsteroids asteroides
+	/// </summary>
 	void startGame(){
 		for (int i = 0; i < numAsteroids; i++) createAsteroids();
 	}
@@ -134,6 +151,5 @@ private:
 	Manager* mngr_;
 	int generations_, time, lastTime, numAsteroids;
 	float widthAst_, heightAst_;
-
 	State* s;
 };
