@@ -85,24 +85,24 @@ void SDLUtils::loadReasources(std::string filename) {
 	// TODO check the correctness of values and issue a corresponding
 	// exception. Now we just do some simple checks, and assume input
 	// is correct.
-
+	
 	// load JSON configuration file
-	JSONValue *jValue = JSON::ParseFromFile(filename);
+	JSONValue *jaux = JSON::ParseFromFile(filename);
 
 	// check it was loaded correctly
 	// the root must be a JSON object
-	if (jValue == nullptr || !jValue->IsObject()) {
+	if (jaux == nullptr || !jaux->IsObject()) {
 		throw "Something went wrong while load/parsing '" + filename + "'";
 	}
 
 	// we know the root is JSONObject
-	JSONObject root = jValue->AsObject();
+	JSONObject root = jaux->AsObject();
 
 	// TODO improve syntax error checks below, now we do not check
 	//      validity of keys with values as sting or integer
 
 	// load fonts
-	jValue = root["fonts"];
+	JSONValue* jValue = root["fonts"];
 	if (jValue != nullptr) {
 		if (jValue->IsArray()) {
 			for (auto &v : jValue->AsArray()) {
@@ -214,7 +214,7 @@ void SDLUtils::loadReasources(std::string filename) {
 			throw "'musics' is not an array";
 		}
 	}
-
+	delete jaux;
 }
 
 void SDLUtils::closeSDLExtensions() {
