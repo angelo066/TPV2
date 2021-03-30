@@ -17,7 +17,8 @@
 
 class CollisionsManager : public Component {
 public:
-	CollisionsManager() {};
+	CollisionsManager(): playerT_(nullptr), player(nullptr), astMngr_(nullptr), health_(nullptr), mngr_(nullptr),
+						 state_(nullptr){};
 
 	virtual ~CollisionsManager() {
 
@@ -33,8 +34,11 @@ public:
 
 	void ActPlayer() {
 		player = mngr_->getHandler<Player>();
+		assert(player != nullptr);
 		playerT_ = player->getComponent<Transform>();
+		assert(playerT_ != nullptr);
 		health_ = player->getComponent<Health>();
+		assert(health_ != nullptr);
 	}
 
 	void update() override {

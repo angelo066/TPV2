@@ -5,12 +5,10 @@
 #include "../ecs/Component.h"
 #include "../ecs/Manager.h"
 
-
 class Gun : public Component {
 public:
 	Gun(const float& t = 0.25f) :
-		tr_(nullptr), h(), w(), r(), lastTime(), timer(t){
-	}
+		tr_(nullptr), h(), w(), r(), lastTime(), timer(t), mngr(nullptr){}
 
 	virtual ~Gun() {
 	}
@@ -23,7 +21,6 @@ public:
 	}
 
 	void update() override {
-
 		//Disparo
 		if (ih().keyDownEvent()) {//Chequeamos input
 			if (ih().isKeyDown(SDLK_s)) {//Chequeamos que sea el espacio

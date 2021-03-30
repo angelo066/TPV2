@@ -44,6 +44,4 @@ public:
 private:
 	Transform *tr_;
 	float speed_, thurst_, maxSpeed_;
-}
-;
-
+};

@@ -12,7 +12,7 @@ enum States {NEWGAME, PAUSED, RUNNING, GAMEOVER};
 class State : public Component {
 public:
 	State() :
-		s(NEWGAME) {
+		s(NEWGAME), win(false) {
 	}
 
 	virtual ~State() {
@@ -20,7 +20,6 @@ public:
 
 
 	void init() override {
-		win = false;
 	}
 
 	

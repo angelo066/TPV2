@@ -1,11 +1,13 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
+
+//Ángel López Benítez
+//Jose Daniel Rave Robayo
 #include <iostream>
 #include <memory>
 
 #include "game/Game.h"
 
-//CollisionManager
 
 void start() {
 	Game g;
@@ -16,6 +18,7 @@ void start() {
 
 
 int main(int, char**) {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
 	try {
 		start();

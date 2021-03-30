@@ -2,8 +2,7 @@
 
 #pragma once
 #include <memory>
-
-
+#include "../ecs/Entity.h"
 
 // when you are not using the methods of a class, just
 // say that it exists, that saves time when parsing files
@@ -16,8 +15,7 @@ public:
 	void init();
 	void start();
 
-	void createPlayer();
-	void createManager();
+	Entity* createManagerNPlayer();
 private:
 	std::unique_ptr<Manager> mngr_;
 };

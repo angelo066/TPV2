@@ -11,6 +11,8 @@
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 
+#include "checkML.h"
+
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
 
@@ -33,8 +35,6 @@ void Game::init() {
 	ball->addComponent<Rectangle>(build_sdlcolor(0x112233ff));
 	ball->addComponent<KeyBoardCtrl>();
 	ball->addComponent<Bounce>();
-
-
 }
 
 void Game::start() {

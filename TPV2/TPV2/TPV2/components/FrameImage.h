@@ -22,8 +22,8 @@ public:
 
 		posX = c;
 		posX = r;
-		iniPos = Vector2D(posX, posY);
-		wholeSize = Vector2D(cols, rows);
+		iniPos = Vector2D((float)posX, (float)posY);
+		wholeSize = Vector2D((float)cols, (float)rows);
 	}
 
 	virtual ~FrameImage() {
@@ -49,11 +49,11 @@ public:
 			else{
 				if (posY != wholeSize.getY() - 1 ){
 					++posY;
-					posX = iniPos.getX();
+					posX = (int)iniPos.getX();
 				}
 				else{
-					posX = iniPos.getX();
-					posY = iniPos.getY();
+					posX = (int)iniPos.getX();
+					posY = (int)iniPos.getY();
 				}
 			}
 			src_ = { sizeXF * posX,sizeYF * posY, sizeXF, sizeYF };
